@@ -11,4 +11,11 @@ describe('NotesModel', () => {
       expect(model.getNotes()).toEqual([]);
     })
   })
+  
+  describe('addNote', () => {
+    it('adds a note to the model', () => {
+      model.addNote('Buy milk');
+      expect(model.getNotes()).toEqual(['Buy milk']);
+    })
+  })
 })
