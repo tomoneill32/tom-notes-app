@@ -27,6 +27,7 @@ class NotesView {
   addToNotes() {
     const noteInput = this.inputEl.value;
     this.model.addNote(noteInput);
+    this.inputEl.value = '';
   }
 
   clearNotesFromPage() {
