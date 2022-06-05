@@ -32,4 +32,11 @@ describe('NotesModel', () => {
       expect(model.getNotes()).toEqual([]);
     })
   })
+
+  describe('setNotes', () => {
+    it('adds a list of notes from an array', () => {
+      model.setNotes(['note number one']);
+      expect(model.getNotes()).toEqual(['note number one']);
+    })
+  })
 })
