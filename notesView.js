@@ -7,13 +7,12 @@ class NotesView {
     this.buttonEl = document.querySelector('#add-note-button');
 
     this.buttonEl.addEventListener('click', () => {
-      this.displayNotes();
+      this.addToNotes()
     })
 
   }
 
   displayNotes() {
-    this.addToNotes();
     this.clearNotesFromPage();
     
     const notes = this.model.getNotes();
@@ -23,11 +22,20 @@ class NotesView {
       noteEL.className = 'note';
       this.mainContainerEl.append(noteEL);
     })
+    console.log(notes);
   }
 
   addToNotes() {
     const noteInput = this.inputEl.value;
-    this.model.addNote(noteInput);
+    const notes = await this.api.createNote(noteInput);
+    console.log(`saved notes ${notes}`);
+    notes.forEach((note) => {
+      const noteEL = document.createElement('div');
+      noteEL.innerText = note;
+      noteEL.className = 'note';
+      this.mainContainerEl.append(noteEL);
+      console.log(`adding ${note}`);
+    })
     this.inputEl.value = '';
   }
 
